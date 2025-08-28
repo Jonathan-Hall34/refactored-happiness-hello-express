@@ -17,6 +17,12 @@ app.get('/Jonathan', (req, res) => {
   res.sendFile(path.join(__dirname, 'public','Jonathan.html')); 
 })
 
+app.get('/api/Jonathan', (req, res) => {
+  // res.send('Jonathan. <a href="/">home</a>')
+  const myVar = 'Hello from server!';
+  res.json({ myVar });
+})
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`)
 })
