@@ -1,20 +1,20 @@
 import 'dotenv/config'
 import express from 'express'
-import path from 'path';
 import { fileURLToPath } from 'url';
-import { MongoClient, ServerApiVersion } from 'mongodb';
-
+import { dirname, join } from 'path';
+import { MongoClient, ServerApiVersion, ObjectId } from 'mongodb';
 
 const app = express()
 const PORT = process.env.PORT || 3000; 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const uri = process.env.MONGO_URI;
-// console.log(uri);
+const __dirname = dirname(__filename);
 
-app.use(express.static(path.join(__dirname, 'public')))
-app.use(express.json());
+app.use(express.static(join(__dirname, 'public')));
 
+app.use(express.json()); 
+
+// const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = process.env.MONGO_URI; 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
   serverApi: {
@@ -39,7 +39,7 @@ connectDB();
 
 
 app.get('/', (req, res) => {
-  res.send('Hello Express from Render 😍😍😍. <a href="Jonathan">Jonathan</a>')
+  res.send('Hello Express from Render 😍😍😍. <a href="Jonathan">Jonathan</a><br><a href="student-crud.html">📝 crud time!</a><br><a href="advanced-student-manager.html">🚀 Advanced CRUD!</a>')
 })
 
 app.get('/Jonathan', (req, res) => {
