@@ -1,7 +1,8 @@
 import 'dotenv/config'
 import express from 'express'
-import { fileURLToPath } from 'url';
+import path from 'path';
 import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 import { MongoClient, ServerApiVersion, ObjectId } from 'mongodb';
 
 const app = express()
@@ -64,11 +65,11 @@ app.post('/api/body', (req, res) => {
   res.json({ "message": `Hi, ${name}. How are you?` });
 });
 
-// app.get('/api/Jonathan', (req, res) => {
-//   // res.send('Jonathan. <a href="/">home</a>')
-//   const myVar = 'Hello from server!';
-//   res.json({ myVar });
-// })
+app.get('/api/Jonathan', (req, res) => {
+  // res.send('Jonathan. <a href="/">home</a>')
+  const myVar = 'Hello from server!';
+  res.json({ myVar });
+})
 
 // Collection: students (documents with name, age, grade fields)
 
